@@ -1,4 +1,4 @@
-package utn.argentinaprograma.PronosticosDeportivos;
+package ar.utn.argentinaprograma4.PronosticosDepor;
 
 public class Equipo {
 	private String nombre;

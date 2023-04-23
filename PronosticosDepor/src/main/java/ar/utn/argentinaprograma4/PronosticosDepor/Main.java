@@ -1,4 +1,4 @@
-package utn.argentinaprograma.PronosticosDeportivos;
+package ar.utn.argentinaprograma4.PronosticosDepor;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -53,7 +53,7 @@ public class Main
 				Equipo equi1 = new Equipo(camposPronosticos[1].trim() );
 	    		Equipo equi2 = new Equipo(camposPronosticos[3].trim() );
 	    		
-				Pronostico pronostico = new Pronostico(pronos, equip, resu);
+				//Pronostico pronostico = new Pronostico(pronos, equip, resu);
 			
 		}
    	

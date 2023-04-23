@@ -23,5 +23,12 @@
 	    <version>4.12</version>
 	    <scope>test</scope>
 	</dependency>
+	
+	<dependency> <!-- https://mvnrepository.com/artifact/com.opencsv/opencsv -->
+    	<groupId>com.opencsv</groupId>
+    	<artifactId>opencsv</artifactId>
+    	<version>5.7.1</version>
+	</dependency>
+
   </dependencies>
 </project>

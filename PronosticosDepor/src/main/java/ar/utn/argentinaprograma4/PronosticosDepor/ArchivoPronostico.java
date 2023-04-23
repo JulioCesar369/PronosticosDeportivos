@@ -1,4 +1,4 @@
-package utn.argentinaprograma.PronosticosDeportivos;
+package ar.utn.argentinaprograma4.PronosticosDepor;
 
 import com.opencsv.bean.CsvBindByPosition;
 
@@ -6,6 +6,17 @@ public class ArchivoPronostico {
 
 	@CsvBindByPosition(position=0)
 	private String participante;
+	
+	@CsvBindByPosition(position=1)
+	private String equipo1;
+	
+	@CsvBindByPosition(position=2)
+	private String resultado;
+	
+	@CsvBindByPosition(position=3)
+	private String equipo2;
+	
+	
 	
 	public String getParticipante() {
 		return participante;
@@ -39,14 +50,7 @@ public class ArchivoPronostico {
 		this.equipo2 = equipo2;
 	}
 
-	@CsvBindByPosition(position=1)
-	private String equipo1;
 	
-	@CsvBindByPosition(position=2)
-	private String resultado;
-	
-	@CsvBindByPosition(position=3)
-	private String equipo2;
 
 	
 	

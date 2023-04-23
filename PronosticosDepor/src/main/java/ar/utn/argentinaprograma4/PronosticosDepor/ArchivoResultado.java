@@ -1,4 +1,4 @@
-package utn.argentinaprograma.PronosticosDeportivos;
+package ar.utn.argentinaprograma4.PronosticosDepor;
 
 import com.opencsv.bean.CsvBindByPosition;
 
