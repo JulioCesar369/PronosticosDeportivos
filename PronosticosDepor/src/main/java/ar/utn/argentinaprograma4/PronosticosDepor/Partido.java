@@ -5,22 +5,24 @@ public class Partido {
 	private Equipo equip2;
 	private int golEquip1;
 	private int golEquip2;
+	private String resultado;
 	
-	public Partido(Equipo equip1, Equipo equip2, int golEquip1, int golEquip2) {
+	
+	
+	public Partido(Equipo equip1, Equipo equip2, int golEquip1, int golEquip2, String resultado) {
 		super();
-		this.setEquip1(equip1);
-		this.setEquip2(equip2);
-		this.setGolEquip1(golEquip1);
-		this.setGolEquip2(golEquip2);
+		this.equip1 = equip1;
+		this.equip2 = equip2;
+		this.golEquip1 = golEquip1;
+		this.golEquip2 = golEquip2;
+		this.resultado = resultado;
 	}
-	
+
 	public Partido(Equipo equip1, Equipo equip2) {
 		super();
 		this.equip1 = equip1;
 		this.equip2 = equip2;
 	}
-
-
 
 	public Equipo getEquip1() {
 		return equip1;
@@ -54,6 +56,14 @@ public class Partido {
 		this.golEquip2 = golEquip2;
 	}
 	
+	public String getResultado() {
+		return resultado;
+	}
+
+	public void setResultado(String resultado) {
+		this.resultado = resultado;
+	}
+	
 	public String resultado(Equipo equip) {
 		if(equip.equals(equip1)) {
 			if(golEquip1 > golEquip2) {
@@ -63,6 +73,8 @@ public class Partido {
 		
 		return "completar...";		
 	}
+
+	
 	
 
 }
