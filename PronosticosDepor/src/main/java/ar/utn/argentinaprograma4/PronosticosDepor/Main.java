@@ -15,7 +15,7 @@ public class Main
        //LectorCSV leerArchivo = new LectorCSV("src/main/resources/Resultados.csv");
     	int puntos = 0;
     	List<Partido> partidosLeidos = new ArrayList<>(); 
-    	Path leeResultado = Paths.get("src/main/resources/Resultados.csv");
+    	Path leeResultado = Paths.get(args[0]);
     	List<String> lineaResultados = null;
     	try {
 			lineaResultados = Files.readAllLines(leeResultado);
@@ -46,9 +46,9 @@ public class Main
     		 partidosLeidos.add(partido);
   		 
     	 }
+    	
     	 
-    	 
-		Path leePronostico = Paths.get("src/main/resources/Pronosticos.csv");
+		Path leePronostico = Paths.get(args[1]);
 		List<String> lineaPronosticos = null;
 		Pronostico partidoPronos = null;
 		String resulPronostico = null;
@@ -64,34 +64,37 @@ public class Main
 		for(String lineaPronostico : lineaPronosticos) {
 				String [] camposPronosticos = lineaPronostico.split(",");
 				
-				Equipo eq1 = new Equipo(camposPronosticos[1].trim() );
-	    		Equipo eq2 = new Equipo(camposPronosticos[5].trim() );
+				Equipo eq1 = new Equipo(camposPronosticos[1] );
+	    		Equipo eq2 = new Equipo(camposPronosticos[5] );
 	    		 
+	    		
+	    		
 	    		for(Partido partidoBuscado : partidosLeidos) {
-	    			if(partidoBuscado.getEquip1().getNombre().equals(eq1.getNombre()) && partidoBuscado.getEquip2().getNombre().equals(eq2.getNombre())) {
-	    				 if("X".equals(camposPronosticos[2])) {
+	    		
+	    			 if((partidoBuscado.getEquip1().getNombre().equals(eq1.getNombre())) && (partidoBuscado.getEquip2().getNombre().equals(eq2.getNombre()))) {
+	    		 
+	    			if("X".equals(camposPronosticos[2])) {
 	    					 resulPronostico = partidoBuscado.getEquip1().getNombre();
-	    					 System.out.println(partidoBuscado.getEquip1().getNombre());
+	    					 aciertos++;
 	    					 
-	    				 }else if("X" == (camposPronosticos[3])) {
+	    				 }else if("X".equals(camposPronosticos[3])) {
 	    					 resulPronostico = "empate";
-	    					
+	    					 aciertos++;
 	    				 }else {
 	    					 resulPronostico = partidoBuscado.getEquip2().getNombre();
-	    					 System.out.println(resulPronostico);
+	    					 aciertos++;
 	    				 }
 	    				 
 	    				 if(resulPronostico.equals(partidoBuscado.getResultado())){
-	    					 aciertos++;
+	    					 
 	    				 }
-	    		
-	    			
+	    	
 	    			}
 	    			
 	    		}
 	    		
-   		partidoPronos = new Pronostico(camposPronosticos[0], resulPronostico);
-   		System.out.println(partidoPronos.getParticipante()+ " punto por acierto: "+aciertos);
+	    	partidoPronos = new Pronostico(camposPronosticos[0], resulPronostico);
+	 		System.out.println(partidoPronos.getParticipante()+ " punto por acierto: "+aciertos);
 	    		
 		}
 		
