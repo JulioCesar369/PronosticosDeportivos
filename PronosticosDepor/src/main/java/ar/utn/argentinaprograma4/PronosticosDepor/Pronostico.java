@@ -5,9 +5,7 @@ public class Pronostico {
 	private Partido partido;
 	private Equipo equipo;
 	private String resultado;
-	
-	
-
+		
 	public Pronostico(String apostador, String resultado) {
 		super();
 		this.apostador = apostador;
@@ -34,8 +32,6 @@ public class Pronostico {
 	public String resultado() {
 		return "equipo";
 	}
-	
-	
 	
 	public Partido getPartido() {
 		return partido;

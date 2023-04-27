@@ -46,8 +46,7 @@ public class Main
     		 partidosLeidos.add(partido);
   		 
     	 }
-    	
-    	 
+    	    	 
 		Path leePronostico = Paths.get(args[1]);
 		List<String> lineaPronosticos = null;
 		Pronostico partidoPronos = null;
@@ -66,40 +65,37 @@ public class Main
 				
 				Equipo eq1 = new Equipo(camposPronosticos[1] );
 	    		Equipo eq2 = new Equipo(camposPronosticos[5] );
-	    		 
 	    		
 	    		
 	    		for(Partido partidoBuscado : partidosLeidos) {
+	    			
 	    		
-	    			 if((partidoBuscado.getEquip1().getNombre().equals(eq1.getNombre())) && (partidoBuscado.getEquip2().getNombre().equals(eq2.getNombre()))) {
+	    			 if(partidoBuscado.getEquip1().getNombre().equals(eq1.getNombre()) && partidoBuscado.getEquip2().getNombre().equals(eq2.getNombre())) {
 	    		 
 	    			if("X".equals(camposPronosticos[2])) {
 	    					 resulPronostico = partidoBuscado.getEquip1().getNombre();
-	    					 aciertos++;
-	    					 
+	    					 	    					 
 	    				 }else if("X".equals(camposPronosticos[3])) {
 	    					 resulPronostico = "empate";
-	    					 aciertos++;
+	    					 
 	    				 }else {
 	    					 resulPronostico = partidoBuscado.getEquip2().getNombre();
-	    					 aciertos++;
+	    					 
 	    				 }
 	    				 
 	    				 if(resulPronostico.equals(partidoBuscado.getResultado())){
-	    					 
+	    					 aciertos++;
 	    				 }
 	    	
 	    			}
-	    			
+	    			 
 	    		}
+	    		partidoPronos = new Pronostico(camposPronosticos[0], resulPronostico);
+	    		System.out.println(partidoPronos.getParticipante()+ " puntos por acierto: "+aciertos);
 	    		
-	    	partidoPronos = new Pronostico(camposPronosticos[0], resulPronostico);
-	 		System.out.println(partidoPronos.getParticipante()+ " punto por acierto: "+aciertos);
+	 		
 	    		
 		}
 		
-		
-		
-   	
     }
 }

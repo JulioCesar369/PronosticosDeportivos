@@ -8,7 +8,6 @@ public class Partido {
 	private String resultado;
 	
 	
-	
 	public Partido(Equipo equip1, Equipo equip2, int golEquip1, int golEquip2, String resultado) {
 		super();
 		this.equip1 = equip1;

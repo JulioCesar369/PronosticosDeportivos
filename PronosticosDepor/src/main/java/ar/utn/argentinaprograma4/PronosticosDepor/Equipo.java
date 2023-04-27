@@ -7,8 +7,7 @@ public class Equipo {
 		public Equipo(String nombre) {
 		super();
 		this.nombre = nombre;
-	}
-		
+	}	
 		
 	public String getNombre() {
 		return nombre;
@@ -16,6 +15,7 @@ public class Equipo {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
+	
 	public String getDescripcion() {
 		return descripcion;
 		
