@@ -1,10 +1,11 @@
 package ar.utn.argentinaprograma4.PronosticosDepor;
 
 public class Equipo {
+	
 	private String nombre;
 	private String descripcion;
 	
-		public Equipo(String nombre) {
+	public Equipo(String nombre) {
 		super();
 		this.nombre = nombre;
 	}	

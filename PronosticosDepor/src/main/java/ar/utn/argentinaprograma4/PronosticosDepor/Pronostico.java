@@ -3,8 +3,8 @@ package ar.utn.argentinaprograma4.PronosticosDepor;
 public class Pronostico {
 	private String apostador;
 	private Partido partido;
-	private Equipo equipo;
 	private String resultado;
+	private int puntos; 
 		
 	public Pronostico(String apostador, String resultado) {
 		super();
@@ -12,22 +12,22 @@ public class Pronostico {
 		this.resultado = resultado;
 	}
 
-	public Pronostico(String apostador, Partido partido, Equipo equipo, String resultado) {
+	public Pronostico(String apostador, Partido partido, String resultado, int puntos) {
 		super();
 		this.apostador = apostador;
 		this.partido = partido;
-		this.equipo = equipo;
 		this.resultado = resultado;
+		this.setPuntos(puntos);
 	}
 
-	public int puntos() {
+	/*public int puntos() {
 		String resulReal = partido.resultado(equipo);
 		if(resultado.equals(resulReal)) {
 			return 1;
 		}else {
 			return 0;
 		}	
-	}
+	}*/
 
 	public String resultado() {
 		return "equipo";
@@ -41,14 +41,7 @@ public class Pronostico {
 		this.partido = partido;
 	}
 
-	public Equipo getEquipo() {
-		return equipo;
-	}
-
-	public void setEquipo(Equipo equipo) {
-		this.equipo = equipo;
-	}
-
+	
 	public String getResultado() {
 		return resultado;
 	}
@@ -57,13 +50,23 @@ public class Pronostico {
 		this.resultado = resultado;
 	}
 
-	public String getParticipante() {
+	public String getApostador() {
 		return apostador;
 	}
 
-	public void setParticipante(String participante) {
+	public void setApostador(String participante) {
 		this.apostador = participante;
 	}
+
+	public int getPuntos() {
+		return puntos;
+	}
+
+	public void setPuntos(int puntos) {
+		this.puntos = puntos;
+	}
+	
+	
 
 	
 }

@@ -13,7 +13,6 @@ public class Main
     public static void main( String[] args )
     {
        //LectorCSV leerArchivo = new LectorCSV("src/main/resources/Resultados.csv");
-    	int puntos = 0;
     	List<Partido> partidosLeidos = new ArrayList<>(); 
     	Path leeResultado = Paths.get(args[0]);
     	List<String> lineaResultados = null;
@@ -46,12 +45,16 @@ public class Main
     		 partidosLeidos.add(partido);
   		 
     	 }
-    	    	 
-		Path leePronostico = Paths.get(args[1]);
+    	 
+    	 
+// Lee archivo pronosticos--------------------------------------------------------------------------------------------------	    	 
+    	 List<Pronostico> pronosticoLeido = new ArrayList<>(); 
+    	Path leePronostico = Paths.get(args[1]);
 		List<String> lineaPronosticos = null;
 		Pronostico partidoPronos = null;
 		String resulPronostico = null;
-		int aciertos=0;
+		int totalPuntos = 0;
+		String nomApos = null;
 		try {
 				lineaPronosticos = Files.readAllLines(leePronostico);
 		} catch (IOException e) {
@@ -59,43 +62,71 @@ public class Main
 				System.out.println(e.getMessage());
 				System.exit(1);
 		}
-			
+
+		Apostador apostador = null;
+		int cuentaPuntos = 0;
+		
 		for(String lineaPronostico : lineaPronosticos) {
-				String [] camposPronosticos = lineaPronostico.split(",");
-				
-				Equipo eq1 = new Equipo(camposPronosticos[1] );
-	    		Equipo eq2 = new Equipo(camposPronosticos[5] );
+				String [] camposPronosticos = lineaPronostico.split(",");				
+				Equipo eq1 = new Equipo(camposPronosticos[1].trim() );
+	    		Equipo eq2 = new Equipo(camposPronosticos[5].trim() );
+	    		
+	    		Partido partidoApuesta = new Partido (eq1, eq2);
+	    		   		
+	    		Pronostico pronosticoApuesta = new Pronostico(camposPronosticos[0].trim(), partidoApuesta, null, 0);
+  		
+	    		//apostador = new Apostador(camposPronosticos[0], 0);
+	    		//nomApos = apostador.getNombre();
 	    		
 	    		
 	    		for(Partido partidoBuscado : partidosLeidos) {
 	    			
 	    		
 	    			 if(partidoBuscado.getEquip1().getNombre().equals(eq1.getNombre()) && partidoBuscado.getEquip2().getNombre().equals(eq2.getNombre())) {
-	    		 
-	    			if("X".equals(camposPronosticos[2])) {
+	    		 	    				 
+	    				 if("X".equals(camposPronosticos[2])) {
 	    					 resulPronostico = partidoBuscado.getEquip1().getNombre();
-	    					 	    					 
+	    					 pronosticoApuesta.setResultado(partidoBuscado.getEquip1().getNombre());		 
 	    				 }else if("X".equals(camposPronosticos[3])) {
 	    					 resulPronostico = "empate";
+	    					 pronosticoApuesta.setResultado("empate");
 	    					 
 	    				 }else {
 	    					 resulPronostico = partidoBuscado.getEquip2().getNombre();
-	    					 
+	    					 pronosticoApuesta.setResultado(partidoBuscado.getEquip2().getNombre());
 	    				 }
 	    				 
 	    				 if(resulPronostico.equals(partidoBuscado.getResultado())){
-	    					 aciertos++;
-	    				 }
-	    	
-	    			}
-	    			 
-	    		}
-	    		partidoPronos = new Pronostico(camposPronosticos[0], resulPronostico);
-	    		System.out.println(partidoPronos.getParticipante()+ " puntos por acierto: "+aciertos);
+	    					 //apostador.sumarPunto();
+	    					 //cuentaPuntos+=1;
+	    					 pronosticoApuesta.setPuntos(1);	    					 	    					 	    					
+	    				 }	 
+	    			 }	    			    		
+	    		 }	
+	    		pronosticoLeido.add(pronosticoApuesta);
 	    		
-	 		
-	    		
-		}
-		
-    }
+			}
+				int c =0;
+				String aux = null;
+				String nombJugador = null;
+				for(Pronostico leeJugador : pronosticoLeido) {
+					nombJugador = leeJugador.getApostador();
+										
+					for(Pronostico cuentPunto :  pronosticoLeido) {
+						if(!nombJugador.equals(aux)) {
+							if(nombJugador.equals(cuentPunto.getApostador())) {
+								c = c + cuentPunto.getPuntos();
+								
+							}
+						}
+					}
+					if(!nombJugador.equals(aux)) {
+						System.out.println(nombJugador + " tiene: " + c);
+						aux = nombJugador;
+						c = 0;
+					}
+					
+				}
+					
+  }
 }
